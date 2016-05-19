@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Map;
 import java.util.Scanner;
-import java.util.regex.Matcher;
 
 /**
  * Created by rajur on 5/18/16.
@@ -30,37 +28,31 @@ public class PrimeFactors {
                 else{
                     if(divisor1%2==1)
                     {
-                        boolean prime=false;
-                        for(long index1=2;index1<=Math.round(Math.sqrt(divisor1));index1++)
-                        {
-                            if(divisor1%index1==0){
-                                prime=false;
-                                break;
-                            }
-                            else
-                                prime=true;
-                        }
-                        if(prime)
+
+                        if(isPrime(divisor1))
                             PrimeFactorArray.add(divisor1);
                     }
                 }
                 if(divisor2%2==1){
-                    boolean prime=false;
-                    for(long index2=2;index2<=Math.round(Math.sqrt(divisor2));index2++)
-                    {
-                        if(divisor2%index2==0){
-                            prime=false;
-                            break;
-                        }
-                        else
-                            prime=true;
-                    }
-                    if(prime) {
+                    if(isPrime(divisor2)) {
                         PrimeFactorArray.add(divisor2);
                     }
                 }
             }
         }
         return PrimeFactorArray;
+    }
+    public static boolean isPrime(int numberN){
+        boolean prime=false;
+        for(int numbers=2;numbers<=Math.round(Math.sqrt(numberN));numbers++)
+        {
+            if(numberN%numbers==0){
+                prime=false;
+                break;
+            }
+            else
+                prime=true;
+        }
+        return prime;
     }
 }
